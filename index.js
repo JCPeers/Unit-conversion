@@ -10,8 +10,6 @@ const volume = document.getElementById("volume");
 const mass = document.getElementById("mass");
 const convertButton = document.getElementById("btn");
 
-convertButton.addEventListener("click", convertLength);
-
 function convertLength() {
   let metersFeet = inputBox.value * 3.281;
   let feetMeters = inputBox.value / 3.281;
@@ -20,10 +18,6 @@ function convertLength() {
     | ${inputBox.value} feet = ${feetMeters.toFixed(3)} meters`;
   length.textContent = lengthOutput;
 }
-
-convertLength();
-
-convertButton.addEventListener("click", convertVolume);
 
 function convertVolume() {
   let litersGallons = inputBox.value * 0.264;
@@ -35,9 +29,6 @@ function convertVolume() {
     | ${inputBox.value} gallons = ${gallonsLiters.toFixed(3)} liters`;
   volume.textContent = volumeOutput;
 }
-convertVolume();
-
-convertButton.addEventListener("click", convertMass);
 
 function convertMass() {
   let kiloPounds = inputBox.value * 2.204;
@@ -49,4 +40,10 @@ function convertMass() {
   mass.textContent = massOutput;
 }
 
-convertMass();
+function convertAll() {
+  convertLength();
+  convertVolume();
+  convertMass();
+}
+
+convertButton.addEventListener("click", convertAll);
